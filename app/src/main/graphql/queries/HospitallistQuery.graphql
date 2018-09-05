@@ -1,0 +1,21 @@
+query Hospitallist{
+  hospitallist{
+    edges{
+      node{
+        id
+        positionX
+        positionY
+        doctorList{
+          edges{
+            node{
+              id
+              doctorName
+              doctorCode
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

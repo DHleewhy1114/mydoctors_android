@@ -1,0 +1,11 @@
+query Doctorlist{
+  doctorlist{
+    edges{
+      node{
+        doctorName
+        doctorCode
+      }
+    }
+  }
+}
+

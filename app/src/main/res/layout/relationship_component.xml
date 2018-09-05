@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:layout_margin="10dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/doctor_card"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_gravity="center|top"
+            android:layout_marginTop="20dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="20dp">
+        <TextView
+            android:id="@+id/doctorname"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/doctorinfo"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="doctorinfo" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!--
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <android.support.v4.widget.CircleImageView
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:src="@drawable/rounded_orange"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/doctorname"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="80dp"
+            android:text="doctorname" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/doctorinfo"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:text="doctorinfo" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/addbutton"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:text="추가"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="34dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="+"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/hospital"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </android.support.v7.widget.CardView>
+    -->
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
