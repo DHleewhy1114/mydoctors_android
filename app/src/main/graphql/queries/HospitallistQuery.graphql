@@ -5,6 +5,7 @@ query Hospitallist{
         id
         positionX
         positionY
+        hospitalName
         doctorList{
           edges{
             node{

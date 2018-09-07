@@ -1,0 +1,8 @@
+query MydoctorsQuery($id:String!){
+  mydoctors(id:$id){
+    id
+   	doctorName
+    doctorCode
+	hospitalId
+  }
+}

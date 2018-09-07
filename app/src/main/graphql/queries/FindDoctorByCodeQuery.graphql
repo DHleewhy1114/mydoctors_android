@@ -1,0 +1,7 @@
+query FindDoctorByCodeQuery($doctorCode:Int!){
+findDoctorByCode(doctorCode:$doctorCode){
+    id
+    doctorName
+    doctorCode
+  }
+  }

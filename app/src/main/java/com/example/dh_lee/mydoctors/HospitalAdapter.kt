@@ -10,7 +10,6 @@ import android.content.Context
 import android.widget.AdapterView
 import kotlinx.android.synthetic.main.hospitalcomponent.view.*
 
-class HospitalData(val hospital_name:String,val hospital_info:String)
 class HospitalAdapter(val items: List<HospitalData>, val context: Context,val clickListener: (HospitalData) -> Unit): RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>(){
     //private val mOnClickListener = onclick()
     //interface onClickListener

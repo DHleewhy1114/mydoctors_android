@@ -7,8 +7,8 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <meta-data
         android:name="com.kakao.sdk.AppKey"
@@ -37,7 +37,8 @@
         <activity android:name=".SelectPictureActivity" />
         <activity android:name=".FindByCodeActivity" />
         <activity android:name=".FindByHospitalActivity" />
-        <activity android:name=".MoreHospitalActivity"></activity>
+        <activity android:name=".MoreHospitalActivity" />
+        <activity android:name=".DoctorListFromHospital"></activity>
     </application>
 
 </manifest>

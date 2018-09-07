@@ -1,0 +1,10 @@
+query QuestionByUserQuery($uid:ID!,$did:ID!){
+  questionByUser(uid:$uid,did:$did){
+    id
+    uid
+    did
+    contents
+    created
+    edited
+  }
+}

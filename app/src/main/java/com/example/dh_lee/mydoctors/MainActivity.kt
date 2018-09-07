@@ -29,8 +29,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun apolloClient(): ApolloClient {
-        return apolloClient()
-    }
-
 }

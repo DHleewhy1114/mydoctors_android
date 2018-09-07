@@ -1,0 +1,10 @@
+mutation MakeRelationship($input:CreateRelationshipInput!){
+    createRelationship(input:$input){
+    relationship{
+        id
+        uid
+        did
+    }
+  }
+
+}

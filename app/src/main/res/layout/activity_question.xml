@@ -21,12 +21,12 @@
     android:id="@+id/questionbox"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <com.google.android.material.button.MaterialButton
+    <!--<com.google.android.material.button.MaterialButton
         android:id="@+id/addphoto"
         android:layout_height="match_parent"
         android:layout_width="0dp"
         android:layout_weight="2"
-        android:text="사진추가"/>
+        android:text="사진추가"/>-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textlayout"
         android:layout_width="0dp"

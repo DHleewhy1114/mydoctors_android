@@ -11,7 +11,6 @@ import android.content.Context
 import android.widget.AdapterView
 import kotlinx.android.synthetic.main.questioncomponent.view.*
 
-class QuestionList(val question_board_text:String)
 class QuestionAdapter(val items: List<QuestionList>, val context: Context,val clickListener: (QuestionList) -> Unit): RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder>(){
     //private val mOnClickListener = onclick()
     //interface onClickListener

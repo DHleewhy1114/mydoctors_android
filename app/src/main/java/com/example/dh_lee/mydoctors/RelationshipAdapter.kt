@@ -11,9 +11,7 @@ import android.widget.AdapterView
 import android.R.attr.data
 import android.text.method.TextKeyListener.clear
 
-
-class ItemData(val doctor_name:String,val doctorinfo:String)
-class RelationshipAdapter(val items: List<ItemData>, val context: Context,val clickListener: (ItemData) -> Unit): RecyclerView.Adapter<RelationshipAdapter.RelationshipViewHolder>(){
+class RelationshipAdapter(val items: List<DoctorData>, val context: Context,val clickListener: (DoctorData) -> Unit): RecyclerView.Adapter<RelationshipAdapter.RelationshipViewHolder>(){
     //private val mOnClickListener = onclick()
     //interface onClickListener
     //private var mlist:List<ItemData>?=null
@@ -42,7 +40,7 @@ class RelationshipAdapter(val items: List<ItemData>, val context: Context,val cl
     class RelationshipViewHolder(view: View): RecyclerView.ViewHolder(view){
         val doctorname = view.doctorname
         //val doctorcard = view.findViewById(R.id.doctor_card) as MaterialCardView
-        fun bind(item: ItemData, clickListener: (ItemData) -> Unit){
+        fun bind(item: DoctorData, clickListener: (DoctorData) -> Unit){
             itemView.doctorname.text = item.doctor_name
             itemView.setOnClickListener{ clickListener(item)}
         }

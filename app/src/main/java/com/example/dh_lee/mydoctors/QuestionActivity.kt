@@ -18,15 +18,12 @@ class QuestionActivity : AppCompatActivity() {
         recycle.layoutManager = LinearLayoutManager(this)
         recycle.layoutManager = GridLayoutManager(this, 1)
         recycle.adapter = QuestionAdapter(lists, this,{ item:QuestionList -> itemClicked(item) })
-        /*val addPhotoBottomDialogFragment = AnswerActivity()
-        addPhotoBottomDialogFragment.show(supportFragmentManager,
-                "add_photo_dialog_fragment")*/
     }
     //android carousel recyclerview
     private fun itemClicked(item : QuestionList) {
-        val addPhotoBottomDialogFragment = AnswerActivity()
-        addPhotoBottomDialogFragment.show(supportFragmentManager,
-                "add_photo_dialog_fragment")
+        val addBottomDialogFragment = AnswerActivity()
+        addBottomDialogFragment.show(supportFragmentManager,
+                "add_answer_fragment")
     }
     fun addlists(){
         val a = QuestionList("배가 아파요")

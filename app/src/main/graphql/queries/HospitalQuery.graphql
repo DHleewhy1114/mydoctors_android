@@ -1,0 +1,14 @@
+query HospitalQuery($id:ID!){
+   hospital(id:$id)
+    {
+      doctorList{
+        edges{
+          node{
+            id
+            doctorName
+            doctorCode
+          }
+        }
+      }
+    }
+}

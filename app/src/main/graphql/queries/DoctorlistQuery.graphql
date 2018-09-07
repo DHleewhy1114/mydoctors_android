@@ -2,6 +2,7 @@ query Doctorlist{
   doctorlist{
     edges{
       node{
+        id
         doctorName
         doctorCode
       }
