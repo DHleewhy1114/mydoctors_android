@@ -1,0 +1,18 @@
+query QuestionQuery($id:ID!){
+ question(id:$id){
+   id
+  created
+  edited
+  contents
+  answerList{
+    edges{
+      node{
+        id
+        contents
+        created
+        edited
+      }
+    }
+  }
+}
+}

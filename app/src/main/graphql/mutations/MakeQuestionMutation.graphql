@@ -1,0 +1,12 @@
+mutation MakeQuestion($input:CreateQuestionInput!){
+    createQuestion(input:$input){
+    question{
+        id
+        uid
+        did
+        created
+        contents
+    }
+  }
+
+}

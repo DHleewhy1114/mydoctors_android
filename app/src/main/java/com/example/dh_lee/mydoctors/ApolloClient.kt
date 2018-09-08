@@ -7,9 +7,11 @@ import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Input
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
+import mutations.MakeQuestionMutation
 import mutations.MakeRelationshipMutation
 import okhttp3.OkHttpClient
 import queries.*
+import type.CreateQuestionInput
 import type.CreateRelationshipInput
 import java.util.concurrent.TimeUnit
 
@@ -21,10 +23,11 @@ object apolloclient {
     private val apolloClient: ApolloClient
     private val doctorlistQueryClient: DoctorlistQuery
     private val hospitallistQueryClient: HospitallistQuery
-    private val hospitalQueryClient:HospitalQuery.Builder
-    private val mydoctorsQueryClient:MydoctorsQuery.Builder
-    private val doctorByCodeQueryClient:FindDoctorByCodeQuery.Builder
-    private val questionByUserQueryClient:QuestionByUserQuery.Builder
+    private val hospitalQueryClient: HospitalQuery.Builder
+    private val mydoctorsQueryClient: MydoctorsQuery.Builder
+    private val doctorByCodeQueryClient: FindDoctorByCodeQuery.Builder
+    private val getquestionByUserQueryClient: QuestionByUserQuery.Builder
+    private val getquestionQueryClient:QuestionQuery.Builder
     init {
         val okHttpClient = OkHttpClient.Builder()
                 .pingInterval(30, TimeUnit.SECONDS)
@@ -38,60 +41,89 @@ object apolloclient {
         hospitalQueryClient = HospitalQuery.builder()
         mydoctorsQueryClient = MydoctorsQuery.builder()
         doctorByCodeQueryClient = FindDoctorByCodeQuery.builder()
-        questionByUserQueryClient = QuestionByUserQuery.builder()
+        getquestionByUserQueryClient = QuestionByUserQuery.builder()
+        getquestionQueryClient = QuestionQuery.builder()
+
     }
 
     fun getApolloClient(): ApolloClient {
         return apolloClient
     }
+
     fun getDoctorlistQueryClient(): DoctorlistQuery {
         return doctorlistQueryClient
     }
+
     fun getDoctorlistQueryCall(): ApolloCall<DoctorlistQuery.Data> {
         return apolloClient.query(doctorlistQueryClient)
     }
-    fun getMydoctorsQueryClient(id:String): MydoctorsQuery {
+
+    fun getMydoctorsQueryClient(id: String): MydoctorsQuery {
         return mydoctorsQueryClient.id(id).build()
     }
-    fun getMydoctorsQueryCall(id:String): ApolloCall<MydoctorsQuery.Data> {
+
+    fun getMydoctorsQueryCall(id: String): ApolloCall<MydoctorsQuery.Data> {
         return apolloClient.query(mydoctorsQueryClient.id(id).build())
     }
+
     fun getHospitallistQueryClient(): HospitallistQuery {
         return hospitallistQueryClient
     }
+
     fun getHospitallistQueryCall(): ApolloCall<HospitallistQuery.Data> {
         return apolloClient.query(hospitallistQueryClient)
     }
 
-    fun getHospitalQueryClient(id:String): HospitalQuery {
+    fun getHospitalQueryClient(id: String): HospitalQuery {
         return hospitalQueryClient.id(id).build()
     }
-    fun getHospitalQueryCall(id:String): ApolloCall<HospitalQuery.Data> {
+
+    fun getHospitalQueryCall(id: String): ApolloCall<HospitalQuery.Data> {
         return apolloClient.query(hospitalQueryClient.id(id).build())
     }
-    fun getDoctorByCodeQueryClient(doctorCode:Int):FindDoctorByCodeQuery{
+
+    fun getDoctorByCodeQueryClient(doctorCode: Int): FindDoctorByCodeQuery {
         return doctorByCodeQueryClient.doctorCode(doctorCode).build()
     }
-    fun getDoctorByCodeQueryCall(doctorCode: Int):ApolloCall<FindDoctorByCodeQuery.Data>{
+
+    fun getDoctorByCodeQueryCall(doctorCode: Int): ApolloCall<FindDoctorByCodeQuery.Data> {
         return apolloClient.query(doctorByCodeQueryClient.doctorCode(doctorCode).build())
     }
 
-    fun makeRelationshipMutationClient(uid:String,did:String): MakeRelationshipMutation {
+    fun makeRelationshipMutationClient(uid: String, did: String): MakeRelationshipMutation {
         val builder = MakeRelationshipMutation.builder()
-        val input =CreateRelationshipInput.builder().uid(uid).did(did).build()
+        val input = CreateRelationshipInput.builder().uid(uid).did(did).build()
         builder.input(input)
         return builder.build()
     }
+
     fun makeRelationshipMutationCall(mutationBuilded: MakeRelationshipMutation): ApolloCall<MakeRelationshipMutation.Data> {
         return apolloClient.mutate(mutationBuilded)
     }
-    fun makeQuestionMutationClient(uid:String,did:String):QuestionByUserQuery{
-        return questionByUserQueryClient.uid(uid).did(did).build()
-    }
-    fun makeQuestionMutationCall(uid:String,did: String):ApolloCall<QuestionByUserQuery.Data>{
-        return apolloClient.query(questionByUserQueryClient.uid(uid).did(did).build())
+
+    fun getQuestionByUserQueryClient(uid: String, did: String): QuestionByUserQuery {
+        return getquestionByUserQueryClient.uid(uid).did(did).build()
     }
 
+    fun getQuestionByUserQueryCall(uid: String, did: String): ApolloCall<QuestionByUserQuery.Data> {
+        return apolloClient.query(getquestionByUserQueryClient.uid(uid).did(did).build())
+    }
+    fun getQuestionQueryClient(question_id:String):QuestionQuery{
+        return getquestionQueryClient.id(question_id).build()
+    }
+    fun getQuestionQueryCall(question_id: String):ApolloCall<QuestionQuery.Data>{
+       return apolloClient.query(getQuestionQueryClient(question_id))
+    }
+    fun makeQuestionMutationClient(uid: String,did: String,contents:String): MakeQuestionMutation {
+        val builder = MakeQuestionMutation.builder()
+        val input = CreateQuestionInput.builder().uid(uid).did(did).contents(contents).build()
+        builder.input(input)
+        return builder.build()
+    }
+
+    fun makeQuestionMutationCall(mutationBuilded: MakeQuestionMutation): ApolloCall<MakeQuestionMutation.Data> {
+        return apolloClient.mutate(mutationBuilded)
+    }
 
 }
 

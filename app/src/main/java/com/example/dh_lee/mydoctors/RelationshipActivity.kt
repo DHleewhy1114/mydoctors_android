@@ -38,6 +38,7 @@ import kotlin.collections.ArrayList
 class RelationshipActivity : AppCompatActivity() {
     //class ItemData(val doctor_name:String,val doctorinfo:String)
     val lists:ArrayList<DoctorData> = ArrayList()
+    val DOCTOR_ID:String="DOCTOR_ID"
     lateinit var doctor_recycle :RecyclerView
     private lateinit var finddoctor: MaterialCardView
     private lateinit var findhospital:MaterialCardView
@@ -78,6 +79,7 @@ class RelationshipActivity : AppCompatActivity() {
     private fun toQuestionAct(item : DoctorData) {
         Toast.makeText(this, "Clicked: ${item.doctor_name}", Toast.LENGTH_LONG).show()
         val intent =Intent(this,QuestionActivity::class.java)
+        intent.putExtra(DOCTOR_ID,item.doctor_id)
         startActivity(intent)
     }
     private fun requestGraphql(recycle:RecyclerView,id:String){
