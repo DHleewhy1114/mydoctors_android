@@ -93,13 +93,7 @@ class QuestionActivity : AppCompatActivity() {
                         runOnUiThread {
                             recycle.swapAdapter(QuestionAdapter(lists, this@QuestionActivity, { item: QuestionList -> itemClicked(item) }), true)
                         }
-                        /*
-                        //api로 ui를 건드리지말고 runOnUiThread사용
-                        // 데이터가 변했음을 swapadapter에 전달
-                        /* runOnUiThread({
-                             test!!.text = response.data()!!.doctorlist()!!.toString()
 
-                         })*/*/
                     }
                 }
 

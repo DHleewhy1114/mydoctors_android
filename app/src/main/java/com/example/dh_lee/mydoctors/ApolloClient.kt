@@ -17,9 +17,9 @@ import java.util.concurrent.TimeUnit
 
 
 object apolloclient {
-    private val BASE_URL_GRAPHQL = "http://10.0.2.2:5000/graphql"
+    private val BASE_URL_GRAPHQL = "http://10.0.2.2:5000/graphql" // 서버 주소
     //   private val BASE_URL_GRAPHQL = "http://220.86.193.189:5000/graphql"
-    //   private val BASE_URL_GRAPHQL = "http://http://192.168.10.109:5000/graphql"
+    //   private val BASE_URL_GRAPHQL = "http://192.168.10.109:5000/graphql"
     private val apolloClient: ApolloClient
     private val doctorlistQueryClient: DoctorlistQuery
     private val hospitallistQueryClient: HospitallistQuery
@@ -128,38 +128,5 @@ object apolloclient {
 
 }
 
-/*fun addlists(recycle: RecyclerView){
-    apolloclient.getDoctorlistQueryCall().enqueue(
-            //For instantiate abstract class in Kotlin you use object: <your class>. Example:
-            object:ApolloCall.Callback<DoctorlistQuery.Data>(){
-                override fun onFailure(e: ApolloException) {
-                    Log.e("errormessage",e.message.toString())
-                }
-
-                override fun onResponse(response: Response<DoctorlistQuery.Data>) {
-
-                    Log.e("responsemessage", response.data()!!.doctorlist()!!.edges().toString())
-                    //response.data()!!.doctorlist()!!.edges().get(0).node()!!.doctorName()
-                    for(item in response.data()!!.doctorlist()!!.edges()){
-                        Log.e("logfor",item.node()!!.doctorName().toString())
-
-                        lists.add(ItemData(item.node()!!.doctorName().toString(),item.node()!!.doctorCode().toString()))
-                        Log.e("lists",lists.toString())
-
-
-                    }
-                    runOnUiThread {
-                        recycle.swapAdapter(RelationshipAdapter(lists, this@RelationshipActivity, { item: ItemData -> itemClicked(item) }), true)
-                    }//api로 ui를 건드리지말고 runOnUiThread사용
-                    // 데이터가 변했음을 swapadapter에 전달
-                    /* runOnUiThread({
-                         test!!.text = response.data()!!.doctorlist()!!.toString()
-
-                     })*/
-                }
-            }
-
-    )
-}*/
 
 

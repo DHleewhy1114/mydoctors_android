@@ -28,9 +28,6 @@ class AnswerActivity: BottomSheetDialogFragment() {
                 false)
         question_text_view = view.findViewById(R.id.bottom_sheet_question)
         answer_text_view = view.findViewById(R.id.bottom_sheet_answer)
-        //val intent = getIntentOld("QUESTION_ID")
-        //question_id = intent.getStringExtra(QuestionActivity().QUESTION_ID)
-        //requestGraphql(question_id)
         Log.e("qeustionid", question_id)
         requestGraphql(question_id)
         return view
@@ -38,27 +35,18 @@ class AnswerActivity: BottomSheetDialogFragment() {
 
     private fun requestGraphql(question_id: String) {
         apolloclient.getQuestionQueryCall(question_id).enqueue(
-                //For instantiate abstract class in Kotlin you use object: <your class>. Example:
                 object : ApolloCall.Callback<QuestionQuery.Data>() {
                     override fun onFailure(e: ApolloException) {
                         Log.e("errormessage", e.message.toString())
                     }
-
                     override fun onResponse(response: Response<QuestionQuery.Data>) {
                         Log.e("responsemessage", response.data()!!.question().toString())
-                        if (response.data()!!.question()!!.answerList() == null) {
-                            return
-                        }
-                        if (response.data()!!.question()!!.contents() == null) {
+                        if (response.data()!!.question()!!.answerList() == null || response.data()!!.question()!!.contents() == null) {
                             return
                         }
                         else {
                             for (item in response.data()!!.question()!!.answerList()!!.edges()) {
-                                //Log.e("logfor",item.contents().toString())
-
-                                answer_text_view.text = item.node()!!.contents()
-                                //Log.e("lists",lists.toString())
-
+                            answer_text_view.text = item.node()!!.contents()
                             }
                         }
                     }

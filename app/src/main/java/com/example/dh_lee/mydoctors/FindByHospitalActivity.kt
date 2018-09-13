@@ -49,19 +49,15 @@ class FindByHospitalActivity : AppCompatActivity() {
 
     private fun requestGraphql(recycle:RecyclerView){
         apolloclient.getHospitallistQueryCall().enqueue(
-                //For instantiate abstract class in Kotlin you use object: <your class>. Example:
                 object: ApolloCall.Callback<HospitallistQuery.Data>(){
                     override fun onFailure(e: ApolloException) {
                         Log.e("errormessage",e.message.toString())
                     }
 
                     override fun onResponse(response: Response<HospitallistQuery.Data>) {
-
                         Log.e("responsemessage", response.data()!!.hospitallist()!!.edges().toString())
-                        //response.data()!!.doctorlist()!!.edges().get(0).node()!!.doctorName()
                         for(item in response.data()!!.hospitallist()!!.edges()){
                             Log.e("logfor",item.node()!!.toString())
-
                             lists.add(HospitalData(item.node()!!.hospitalName().toString(),"",item.node()!!.id()))
                             Log.e("lists",lists.toString())
 
@@ -71,10 +67,6 @@ class FindByHospitalActivity : AppCompatActivity() {
                             recycle.swapAdapter(HospitalAdapter(lists, this@FindByHospitalActivity, { hospital: HospitalData -> toDoctorFromHospital(hospital) }), true)
                         }//api로 ui를 건드리지말고 runOnUiThread사용
                         // 데이터가 변했음을 swapadapter에 전달
-                        /* runOnUiThread({
-                             test!!.text = response.data()!!.doctorlist()!!.toString()
-
-                         })*/
                     }
                 }
 

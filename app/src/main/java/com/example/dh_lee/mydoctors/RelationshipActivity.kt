@@ -45,10 +45,10 @@ class RelationshipActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_relationship)
         doctor_recycle = findViewById(R.id.doctorrelationshiprecycler)
-        mypage_button=findViewById(R.id.to_mypage_button)
+        mypage_button = findViewById(R.id.to_mypage_button)
         requestGraphql(doctor_recycle,"VXNlcjox")
         makeRecyclerview(doctor_recycle)
-        //recycle.swapAdapter(RelationshipAdapter(lists,this,{ item:ItemData -> itemClicked(item) }),true)
+
         val fab = findViewById<FloatingActionButton>(R.id.main_float) as FloatingActionButton
         fab.setOnClickListener {
             //popup 함수
@@ -60,13 +60,16 @@ class RelationshipActivity : AppCompatActivity() {
 
     }
     private fun popMakeRelation(){
+        //의사 등록을 위해 코드로 찾을지 병원으로 찾을 지 선택하는 팝업
         val popupView = layoutInflater.inflate(R.layout.activity_make_relationship, null)
         val mPopupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         //popupView 에서 (LinearLayout 을 사용) 레이아웃이 둘러싸고 있는 컨텐츠의 크기 만큼 팝업 크기를 지정
-        mPopupWindow.setFocusable(true) // 외부 영역 선택히 PopUp 종료
+        mPopupWindow.setFocusable(true) // 외부 영역 선택 시 PopUp 종료
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+
         finddoctor = popupView.findViewById(R.id.clicktodoctorcode) as MaterialCardView
         findhospital = popupView.findViewById(R.id.clicktohospital) as MaterialCardView
+
         finddoctor.setOnClickListener{
            startActByClick(FindByCodeActivity())
         }
@@ -80,26 +83,20 @@ class RelationshipActivity : AppCompatActivity() {
         startActivity(intent)
     }
     private fun toQuestionAct(item : DoctorData) {
-        Toast.makeText(this, "Clicked: ${item.doctor_name}", Toast.LENGTH_LONG).show()
         val intent =Intent(this,QuestionActivity::class.java)
         intent.putExtra(DOCTOR_ID,item.doctor_id)
         startActivity(intent)
     }
     private fun requestGraphql(recycle:RecyclerView,id:String){
          apolloclient.getMydoctorsQueryCall(id).enqueue(
-                //For instantiate abstract class in Kotlin you use object: <your class>. Example:
                 object:ApolloCall.Callback<MydoctorsQuery.Data>(){
                     override fun onFailure(e: ApolloException) {
                         Log.e("errormessage",e.message.toString())
                     }
-
                     override fun onResponse(response: Response<MydoctorsQuery.Data>) {
-
                         Log.e("responsemessage", response.data()!!.mydoctors().toString())
-                        //response.data()!!.doctorlist()!!.edges().get(0).node()!!.doctorName()
                         for(item in response.data()!!.mydoctors()!!.iterator()){
                             Log.e("logfor",item.doctorName().toString())
-
                             lists.add(DoctorData(item.doctorName().toString(),item.doctorCode().toString(),item.id()))
                             Log.e("lists",lists.toString())
 
@@ -107,12 +104,9 @@ class RelationshipActivity : AppCompatActivity() {
                         }
                         runOnUiThread {
                             recycle.swapAdapter(RelationshipAdapter(lists, this@RelationshipActivity, { item: DoctorData -> toQuestionAct(item) }), true)
-                        }//api로 ui를 건드리지말고 runOnUiThread사용
-                        // 데이터가 변했음을 swapadapter에 전달
-                      /* runOnUiThread({
-                           test!!.text = response.data()!!.doctorlist()!!.toString()
-
-                       })*/
+                            //직접 ui를 건드리지말고 runOnUiThread사용
+                            // 데이터가 변했음을 swapadapter에 전달
+                        }
                     }
                 }
 

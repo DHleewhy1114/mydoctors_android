@@ -13,20 +13,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //val loginintent = Intent(this, LoginActivity::class.java)
-        //val loginintent = Intent(this, QuestionActivity::class.java)
-        //val loginintent = Intent(this,MapTest::class.java)
-        val relationshipintent = Intent(this,RelationshipActivity::class.java)
-        //val loginintent = Intent(this, TakePictureActivity::class.java)
-        //val loginintent = Intent(this, MakeRelationshipActivity::class.java)
-        //val relationshipintent = Intent(this,MyPageActivity::class.java)
-        startActivity(relationshipintent)
-        /*apolloClient().query(
-                doctor.builder()
-                        .limit(10)
-                        .type(FeedType.HOT)
-                        .build()
-        )*/
+        val relationshipintent = Intent(this,RelationshipActivity::class.java)//로그인 과정 우선 스킵 추후에 로그인 기능 넣을 때 user key 받아서 넘길것
+        startActivity(relationshipintent) // 내가 등록한 의사 리스트로
     }
 
 
