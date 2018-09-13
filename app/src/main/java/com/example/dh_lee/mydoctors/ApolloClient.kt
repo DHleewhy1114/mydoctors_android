@@ -28,6 +28,7 @@ object apolloclient {
     private val doctorByCodeQueryClient: FindDoctorByCodeQuery.Builder
     private val getquestionByUserQueryClient: QuestionByUserQuery.Builder
     private val getquestionQueryClient:QuestionQuery.Builder
+    //private val func:Unit?=null
     init {
         val okHttpClient = OkHttpClient.Builder()
                 .pingInterval(30, TimeUnit.SECONDS)

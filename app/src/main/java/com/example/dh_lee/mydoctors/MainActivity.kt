@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val relationshipintent = Intent(this,RelationshipActivity::class.java)
         //val loginintent = Intent(this, TakePictureActivity::class.java)
         //val loginintent = Intent(this, MakeRelationshipActivity::class.java)
+        //val relationshipintent = Intent(this,MyPageActivity::class.java)
         startActivity(relationshipintent)
         /*apolloClient().query(
                 doctor.builder()

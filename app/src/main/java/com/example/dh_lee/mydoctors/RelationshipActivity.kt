@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.zip.Inflater
 import android.view.LayoutInflater
-import android.widget.PopupWindow
+import android.widget.*
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.transition.Slide
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
 import com.apollographql.apollo.ApolloCall
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Query
@@ -40,12 +38,14 @@ class RelationshipActivity : AppCompatActivity() {
     val lists:ArrayList<DoctorData> = ArrayList()
     val DOCTOR_ID:String="DOCTOR_ID"
     lateinit var doctor_recycle :RecyclerView
+    lateinit var mypage_button :ImageButton
     private lateinit var finddoctor: MaterialCardView
     private lateinit var findhospital:MaterialCardView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_relationship)
         doctor_recycle = findViewById(R.id.doctorrelationshiprecycler)
+        mypage_button=findViewById(R.id.to_mypage_button)
         requestGraphql(doctor_recycle,"VXNlcjox")
         makeRecyclerview(doctor_recycle)
         //recycle.swapAdapter(RelationshipAdapter(lists,this,{ item:ItemData -> itemClicked(item) }),true)
@@ -53,6 +53,9 @@ class RelationshipActivity : AppCompatActivity() {
         fab.setOnClickListener {
             //popup 함수
             popMakeRelation()
+        }
+        mypage_button.setOnClickListener {
+            startActByClick(MyPageActivity())
         }
 
     }

@@ -45,15 +45,17 @@ class AnswerActivity: BottomSheetDialogFragment() {
                     }
 
                     override fun onResponse(response: Response<QuestionQuery.Data>) {
-
                         Log.e("responsemessage", response.data()!!.question().toString())
-                        //response.data()!!.doctorlist()!!.edges().get(0).node()!!.doctorName()
-                        question_text_view.text = response.data()!!.question()!!.contents()
                         if (response.data()!!.question()!!.answerList() == null) {
                             return
-                        } else {
+                        }
+                        if (response.data()!!.question()!!.contents() == null) {
+                            return
+                        }
+                        else {
                             for (item in response.data()!!.question()!!.answerList()!!.edges()) {
                                 //Log.e("logfor",item.contents().toString())
+
                                 answer_text_view.text = item.node()!!.contents()
                                 //Log.e("lists",lists.toString())
 

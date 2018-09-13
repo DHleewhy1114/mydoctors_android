@@ -38,7 +38,8 @@
         <activity android:name=".FindByCodeActivity" />
         <activity android:name=".FindByHospitalActivity" />
         <activity android:name=".MoreHospitalActivity" />
-        <activity android:name=".DoctorListFromHospital"></activity>
+        <activity android:name=".DoctorListFromHospital" />
+        <activity android:name=".MyPageActivity"></activity>
     </application>
 
 </manifest>
