@@ -7,8 +7,10 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <meta-data
         android:name="com.kakao.sdk.AppKey"
@@ -39,7 +41,8 @@
         <activity android:name=".FindByHospitalActivity" />
         <activity android:name=".MoreHospitalActivity" />
         <activity android:name=".DoctorListFromHospital" />
-        <activity android:name=".MyPageActivity"></activity>
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".ScheduleActivity"></activity>
     </application>
 
 </manifest>

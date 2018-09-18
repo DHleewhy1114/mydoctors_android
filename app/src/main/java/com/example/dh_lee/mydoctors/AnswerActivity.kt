@@ -41,6 +41,7 @@ class AnswerActivity: BottomSheetDialogFragment() {
                     }
                     override fun onResponse(response: Response<QuestionQuery.Data>) {
                         Log.e("responsemessage", response.data()!!.question().toString())
+                        question_text_view.text = response.data()!!.question()!!.contents()
                         if (response.data()!!.question()!!.answerList() == null || response.data()!!.question()!!.contents() == null) {
                             return
                         }

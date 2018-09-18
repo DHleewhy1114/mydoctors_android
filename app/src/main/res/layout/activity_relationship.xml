@@ -12,6 +12,11 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="내 의사"
+                android:layout_gravity="start"/>
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/to_mypage_button"
