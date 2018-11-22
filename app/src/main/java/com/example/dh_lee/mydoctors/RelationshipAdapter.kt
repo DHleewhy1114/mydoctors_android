@@ -26,7 +26,6 @@ class RelationshipAdapter(val items: List<DoctorData>, val context: Context,val 
     }
 
     class RelationshipViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val doctorname = view.doctorname
         fun bind(item: DoctorData, clickListener: (DoctorData) -> Unit){
             itemView.doctorname.text = item.doctor_name
             itemView.setOnClickListener{ clickListener(item)}
